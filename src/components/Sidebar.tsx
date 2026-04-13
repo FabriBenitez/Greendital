@@ -73,7 +73,7 @@ export default function Sidebar() {
     <>
       <div className={`flex min-h-[72px] items-center gap-3 border-b border-border px-4 py-4 ${collapsed ? 'justify-center px-2' : ''}`}>
         <AppLogo size={36} />
-        {!collapsed ? <span className="truncate text-base font-bold tracking-tight text-foreground">TechOps</span> : null}
+        {!collapsed ? <span className="truncate text-base font-bold tracking-tight text-foreground">Greendital</span> : null}
       </div>
 
       <nav className="flex-1 overflow-y-auto scrollbar-thin px-2 py-3">

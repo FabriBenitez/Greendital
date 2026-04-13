@@ -24,7 +24,7 @@ const demoCredentials: DemoCredential[] = [
   {
     role: 'admin',
     roleLabel: 'Admin / Dueno',
-    email: 'martin@techops.store',
+    email: 'martin@greendital.store',
     password: 'admin2026',
     color: 'text-primary',
   }
@@ -89,13 +89,13 @@ export default function LoginForm() {
     <div className="animate-fade-in">
       <div className="mb-8 flex items-center gap-2 lg:hidden">
         <AppLogo size={32} />
-        <span className="text-lg font-bold text-foreground">TechOps</span>
+        <span className="text-lg font-bold text-foreground">Greendital</span>
       </div>
 
       <div className="mb-8">
         <h2 className="text-2xl font-bold tracking-tight text-foreground">Iniciar sesion</h2>
         <p className="mt-1.5 text-sm text-muted-foreground">
-          Ingresa con tu cuenta del equipo TechOps.
+          Ingresa con tu cuenta del equipo Greendital.
         </p>
       </div>
 
@@ -109,7 +109,7 @@ export default function LoginForm() {
             type="email"
             value={formData.email}
             onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
-            placeholder="tu@techops.store"
+            placeholder="tu@greendital.store"
             className={`w-full rounded-lg border px-3.5 py-2.5 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20 ${error ? 'border-destructive bg-destructive/5' : 'border-border bg-white hover:border-primary/40'}`}
           />
         </div>
