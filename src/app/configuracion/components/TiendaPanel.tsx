@@ -24,10 +24,10 @@ export default function TiendaPanel() {
     formState: { errors, isDirty },
   } = useForm<TiendaFormData>({
     defaultValues: {
-      nombre: 'TechStore Palermo',
+      nombre: 'Greendital Palermo',
       direccion: 'Av. Santa Fe 3456, CABA',
       telefono: '+54 11 4832-7700',
-      email: 'ventas@techstorepalermo.com.ar',
+      email: 'ventas@greendital.com.ar',
       moneda: 'ARS',
       iva: '21',
       timezone: 'America/Argentina/Buenos_Aires',

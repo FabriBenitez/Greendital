@@ -1,3 +1,5 @@
+'use client'
+
 import { Minus, TrendingDown, TrendingUp } from 'lucide-react'
 import { initialProducts } from '@/mockData'
 
@@ -21,7 +23,7 @@ const topProducts: TopProduct[] = initialProducts.slice(0, 5).map((p: any) => ({
   nombre: p.name,
   categoria: p.category,
   marca: p.brand,
-  vendidosHoy: Math.floor(Math.random() * 5) + 1,
+  vendidosHoy: p.id % 5 + 1, // Usamos una lógica fija basada en el ID para evitar errores de hidratación
   vendidosMes: p.soldMonthly,
   precio: p.price,
   margen: Math.round(((p.price - p.cost) / p.cost) * 100),
