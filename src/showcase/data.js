@@ -49,7 +49,7 @@ export const initialProducts = [
     category: 'iPhones',
     brand: 'Apple',
     sku: 'IPH-15-128',
-    image: 'https://www.xataka.com/analisis/iphone-15-iphone-15-plus-analisis-caracteristicas-precio', // iPhone 15 Pink
+    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&q=80&w=400', // iPhone 15 Pink
     cost: 1050000,
     price: 1349900,
     stock: 4,
@@ -85,7 +85,7 @@ export const initialProducts = [
     category: 'iPhones',
     brand: 'Apple',
     sku: 'IPH-15P-256',
-    image: 'https://listado.mercadolibre.com.ar/iphone-15-pro',
+    image: 'https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&q=80&w=400', // iPhone 15 Pro
     cost: 1480000,
     price: 1899900,
     stock: 3,
@@ -120,7 +120,7 @@ export const initialProducts = [
     category: 'iPhones',
     brand: 'Apple',
     sku: 'IPH-14-128',
-    image: 'https://www.sagitariodigital.com.ar/producto/iphone-14/',
+    image: 'https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?auto=format&fit=crop&q=80&w=400', // iPhone 14
     cost: 790000,
     price: 999900,
     stock: 5,
@@ -156,7 +156,7 @@ export const initialProducts = [
     category: 'iPhones',
     brand: 'Apple',
     sku: 'IPH-16P-128',
-    image: 'https://imgs.search.brave.com/54EpG0fruUhVZMfhdhUufKFCvG4PYc1YbmL8ri7XVjg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLmJs/b2dzLmVzLzRlMGQz/My9pcGhvbmUtMTYt/cHJvXzczNTEvNDUw/XzEwMDAuanBlZw', // iPhone 16 Pro Desert
+    image: 'https://imgs.search.brave.com/Dz-ZeHPhNptfTj_GtgSKDQl8AvQX8n0cS4RHiVQk3lQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wbGF0/Zm9ybS50aGV2ZXJn/ZS5jb20vd3AtY29u/dGVudC91cGxvYWRz/L3NpdGVzLzIvY2hv/cnVzL3VwbG9hZHMv/Y2hvcnVzX2Fzc2V0/L2ZpbGUvMjU2MTI4/NzEvRFNDMDgzMDgu/SlBHP3F1YWxpdHk9/OTAmc3RyaXA9YWxs/JmNyb3A9MC4xMzI5/Nzg3MjM0MDQyNSww/LDk5LjczNDA0MjU1/MzE5MiwxMDAmdz0y/NDAw', // iPhone 16 Pro Desert
     cost: 1650000,
     price: 1999900,
     stock: 8,
@@ -191,7 +191,7 @@ export const initialProducts = [
     category: 'iPhones',
     brand: 'Apple',
     sku: 'IPH-16-128',
-    image: 'https://imgs.search.brave.com/Km1IO07ijme4NNVLi0d4Ei6jpUwGyhIa6_roMyF4k-A/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLmJs/b2dzLmVzLzQwM2Zj/OS9pcGhvbmUtMTYt/YW5hbGlzaXMtMDYv/NDUwXzEwMDAud2Vi/cA', // iPhone 16 Ultramarine
+    image: 'https://imgs.search.brave.com/Dz-ZeHPhNptfTj_GtgSKDQl8AvQX8n0cS4RHiVQk3lQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wbGF0/Zm9ybS50aGV2ZXJn/ZS5jb20vd3AtY29u/dGVudC91cGxvYWRz/L3NpdGVzLzIvY2hv/cnVzL3VwbG9hZHMv/Y2hvcnVzX2Fzc2V0/L2ZpbGUvMjU2MTI4/NzEvRFNDMDgzMDgu/SlBHP3F1YWxpdHk9/OTAmc3RyaXA9YWxs/JmNyb3A9MC4xMzI5/Nzg3MjM0MDQyNSww/LDk5LjczNDA0MjU1/MzE5MiwxMDAmdz0y/NDAw', // iPhone 16 Ultramarine
     cost: 1150000,
     price: 1499900,
     stock: 12,
@@ -227,7 +227,7 @@ export const initialProducts = [
     category: 'Reacondicionados',
     brand: 'Apple',
     sku: 'IPH-13-128-R',
-    image: 'https://imgs.search.brave.com/lFRlnE5XyhE4kBerpuflXwgo2s3iL2XfSQlNX3E8nRg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM0/MzQ0NDg4Ny9waG90/by9pcGhvbmUtMTMt/aW4tYmx1ZS5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9VTlt/QzJodnVxdHVfdnN0/ZFJFZFU3UV9OYTRY/aDcyOEZmam5YVkk2/Q1dfOD0',
+    image: 'https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&q=80&w=400', // iPhone 13
     cost: 510000,
     price: 689900,
     stock: 3,
