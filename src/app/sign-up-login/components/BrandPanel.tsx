@@ -38,7 +38,7 @@ export default function BrandPanel() {
       <div className="relative z-10">
         <div className="mb-16 flex items-center gap-3">
           <AppLogo size={36} className="rounded-2xl" />
-          <span className="text-xl font-bold tracking-tight text-white">TechOps</span>
+          <span className="text-xl font-bold tracking-tight text-white">Greendital</span>
         </div>
 
         <div className="mb-10">
@@ -72,7 +72,7 @@ export default function BrandPanel() {
       </div>
 
       <div className="relative z-10 border-t border-white/10 pt-6 text-xs text-white/50">
-        © 2026 TechOps · Version 2.4.1 · Soporte
+        © 2026 Greendital · Version 2.4.1 · Soporte
       </div>
     </div>
   )
