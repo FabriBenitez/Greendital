@@ -376,7 +376,7 @@ function App() {
         Conectividad: form.connectivity || 'A definir',
       },
       variants: [{ label: 'Version base', stock: Number(form.stock) }],
-      priceHistory: [currency.format(Number(form.cost)).replace('$', '').trim(), currency.format(suggestedPrice).replace('$', '').trim()],
+      priceHistory: [Number(form.cost), suggestedPrice],
     }
 
     setProducts((current) => [newProduct, ...current])

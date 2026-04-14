@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 import AppLayout from '@/components/AppLayout'
 import { initialProducts, categories as MOCK_CATEGORIES, brands as MOCK_BRANDS } from '@/mockData'
@@ -60,7 +58,8 @@ function ProductModal({ product, onClose }: { product?: Product | null; onClose:
       <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-modal animate-slide-up">
         <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border bg-white px-6 py-4">
           <h2 className="text-lg font-bold text-foreground">{product ? 'Editar Producto' : 'Nuevo Producto'}</h2>
-          <button onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={16} /></button>
+          <button aria-label="Cerrar modal"
+          onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={16} /></button>
         </div>
         <div className="space-y-5 p-6">
           <div className="flex cursor-pointer flex-col items-center gap-2 rounded-xl border-2 border-dashed border-border p-6 transition-colors hover:border-primary/40 hover:bg-primary/5">
@@ -70,23 +69,27 @@ function ProductModal({ product, onClose }: { product?: Product | null; onClose:
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Nombre del producto *</label>
-              <input defaultValue={product?.name} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
+              <input aria-label="Costo del producto"
+              defaultValue={product?.name} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
             </div>
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">SKU *</label>
-              <input defaultValue={product?.sku} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
+              <input aria-label="Costo del producto"
+              defaultValue={product?.sku} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
             </div>
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Marca</label>
-              <select defaultValue={product?.brand} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">{BRANDS.slice(1).map((brand) => <option key={brand}>{brand}</option>)}</select>
+              <select aria-label="Marca del producto"
+              defaultValue={product?.brand} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">{BRANDS.slice(1).map((brand) => <option key={brand}>{brand}</option>)}</select>
             </div>
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Categoria</label>
-              <select defaultValue={product?.category} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">{CATEGORIES.slice(1).map((category) => <option key={category}>{category}</option>)}</select>
+              <select aria-label="Marca del producto"
+              defaultValue={product?.category} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">{CATEGORIES.slice(1).map((category) => <option key={category}>{category}</option>)}</select>
             </div>
             <div>
               <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Stock actual</label>
-              <input type="number" defaultValue={product?.stock} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
+              <input aria-label="Costo del producto" type="number" defaultValue={product?.stock} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
             </div>
           </div>
           <div className="space-y-3 rounded-xl bg-muted/50 p-4">
@@ -94,11 +97,13 @@ function ProductModal({ product, onClose }: { product?: Product | null; onClose:
             <div className="grid grid-cols-3 gap-3">
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Precio de costo</label>
-                <input type="number" value={costPrice} onChange={(event) => setCostPrice(Number(event.target.value))} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                <input aria-label="Precio de costo"
+                type="text" value={costPrice} onChange={(event) => setCostPrice(Number(event.target.value))} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
               </div>
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Precio de venta</label>
-                <input type="number" value={salePrice} onChange={(event) => setSalePrice(Number(event.target.value))} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
+                <input aria-label="Precio de venta"
+                type="search" value={salePrice} onChange={(event) => setSalePrice(Number(event.target.value))} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
               </div>
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Margen</label>
@@ -108,7 +113,8 @@ function ProductModal({ product, onClose }: { product?: Product | null; onClose:
           </div>
           <div>
             <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Descripcion tecnica</label>
-            <textarea rows={3} defaultValue={product ? Object.entries(product.specs || {}).map(([key, value]) => `${key}: ${value}`).join('\n') : ''} className="w-full resize-none rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
+            <textarea aria-label="Especificaciones del producto"
+            rows={3} defaultValue={product ? Object.entries(product.specs || {}).map(([key, value]) => `${key}: ${value}`).join('\n') : ''} className="w-full resize-none rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" />
           </div>
         </div>
         <div className="flex items-center justify-end gap-3 border-t border-border px-6 py-4">
@@ -143,7 +149,7 @@ export default function ProductosPage() {
             <h1 className="text-2xl font-bold tracking-tight text-foreground">Productos</h1>
             <p className="mt-0.5 text-sm text-muted-foreground">{mockProducts.length} productos en catalogo</p>
           </div>
-          <button onClick={() => { setEditProduct(null); setModalOpen(true) }} className="btn-primary text-sm"><Plus size={16} />Nuevo producto</button>
+          <button aria-label="Actualizar alertas de stock" onClick={() => { setEditProduct(null); setModalOpen(true) }} className="btn-primary text-sm"><Plus size={16} />Nuevo producto</button>
         </div>
 
         <div className="flex flex-wrap items-center gap-3 rounded-xl border border-border bg-white p-4">
@@ -153,12 +159,14 @@ export default function ProductosPage() {
           </div>
           <div className="flex items-center gap-2">
             <Filter size={14} className="text-muted-foreground" />
-            <select value={selectedCategory} onChange={(event) => setSelectedCategory(event.target.value)} className="rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">{CATEGORIES.map((category) => <option key={category}>{category}</option>)}</select>
-            <select value={selectedBrand} onChange={(event) => setSelectedBrand(event.target.value)} className="rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">{BRANDS.map((brand) => <option key={brand}>{brand}</option>)}</select>
+            <select aria-label="Marca del producto"
+            value={selectedCategory} onChange={(event) => setSelectedCategory(event.target.value)} className="rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">{CATEGORIES.map((category) => <option key={category}>{category}</option>)}</select>
+            <select aria-label="Marca del producto"
+            value={selectedBrand} onChange={(event) => setSelectedBrand(event.target.value)} className="rounded-lg border border-border bg-white px-3 py-2.5 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">{BRANDS.map((brand) => <option key={brand}>{brand}</option>)}</select>
           </div>
           <div className="ml-auto flex items-center gap-1">
-            <button onClick={() => setViewMode('table')} className={`rounded-lg p-2 transition-colors ${viewMode === 'table' ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted'}`}><ArrowUpDown size={14} /></button>
-            <button onClick={() => setViewMode('grid')} className={`rounded-lg p-2 transition-colors ${viewMode === 'grid' ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted'}`}><Package size={14} /></button>
+            <button aria-label="Crear nuevo producto" onClick={() => setViewMode('table')} className={`rounded-lg p-2 transition-colors ${viewMode === 'table' ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted'}`}><ArrowUpDown size={14} /></button>
+            <button aria-label="Crear nuevo producto" onClick={() => setViewMode('grid')} className={`rounded-lg p-2 transition-colors ${viewMode === 'grid' ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted'}`}><Package size={14} /></button>
           </div>
         </div>
 
@@ -202,9 +210,15 @@ export default function ProductosPage() {
                     <td className="px-4 py-3 text-center"><span className={statusConfig[product.status].className}>{statusConfig[product.status].label}</span></td>
                     <td className="px-4 py-3 text-right">
                       <div className="flex items-center justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-                        <button onClick={() => { setEditProduct(product); setModalOpen(true) }} className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"><Edit2 size={13} /></button>
-                        <button className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><Eye size={13} /></button>
-                        <button className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><MoreVertical size={14} /></button>
+                        <button 
+                        aria-label="Actualizar alertas de stock"
+                        onClick={() => { setEditProduct(product); setModalOpen(true) }} className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"><Edit2 size={13} /></button>
+                        <button 
+                        aria-label="Actualizar alertas de stock"
+                        className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><Eye size={13} /></button>
+                        <button 
+                        aria-label="Actualizar alertas de stock"
+                        className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><MoreVertical size={14} /></button>
                       </div>
                     </td>
                   </tr>
@@ -231,8 +245,8 @@ export default function ProductosPage() {
                 {product.specs ? <div className="mb-3 space-y-1">{Object.entries(product.specs).slice(0, 2).map(([key, value]) => <div key={key} className="flex justify-between text-xs"><span className="text-muted-foreground">{key}</span><span className="font-medium text-foreground">{value}</span></div>)}</div> : null}
                 <div className="flex items-center justify-between border-t border-border pt-3"><div><p className="text-xs text-muted-foreground">Precio venta</p><p className="font-mono font-bold text-foreground">{formatCurrency(product.salePrice)}</p></div><div className="text-right"><p className="text-xs text-muted-foreground">Margen</p><p className={`font-mono font-bold ${product.margin >= 35 ? 'text-success' : 'text-warning'}`}>{product.margin}%</p></div></div>
                 <div className="mt-3 flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
-                  <button onClick={() => { setEditProduct(product); setModalOpen(true) }} className="btn-secondary flex-1 py-1.5 text-xs"><Edit2 size={12} />Editar</button>
-                  <button className="btn-primary flex-1 py-1.5 text-xs"><Eye size={12} />Ver</button>
+                  <button aria-label="Editar producto" onClick={() => { setEditProduct(product); setModalOpen(true) }} className="btn-secondary flex-1 py-1.5 text-xs"><Edit2 size={12} />Editar</button>
+                  <button aria-label="Ver producto" className="btn-primary flex-1 py-1.5 text-xs"><Eye size={12} />Ver</button>
                 </div>
               </div>
             ))}

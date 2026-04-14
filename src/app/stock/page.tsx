@@ -68,14 +68,17 @@ function AdjustModal({ item, onClose }: { item: StockItem; onClose: () => void }
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
       <div className="w-full max-w-md rounded-2xl bg-white shadow-modal animate-slide-up">
-        <div className="flex items-center justify-between border-b border-border px-6 py-4"><h2 className="text-lg font-bold text-foreground">Ajustar Stock</h2><button onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={16} /></button></div>
+        <div className="flex items-center justify-between border-b border-border px-6 py-4"><h2 className="text-lg font-bold text-foreground">Ajustar Stock</h2>
+        <button aria-label="Actualizar alertas de stock"
+        onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={16} /></button></div>
         <div className="space-y-4 p-6">
           <div className="flex items-center gap-3 rounded-xl bg-muted/50 p-3"><div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted"><Package size={18} className="text-muted-foreground" /></div><div><p className="text-sm font-semibold text-foreground">{item.name}</p><p className="font-mono text-xs text-muted-foreground">{item.sku} · Stock actual: <strong>{item.stock}</strong></p></div></div>
           <div>
             <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Tipo de movimiento</label>
             <div className="grid grid-cols-3 gap-2">{(['entrada', 'salida', 'ajuste'] as const).map((movement) => <button key={movement} onClick={() => setType(movement)} className={`rounded-lg border py-2.5 text-sm font-semibold capitalize transition-all ${type === movement ? 'border-primary bg-primary/10 text-primary' : 'border-border text-muted-foreground hover:bg-muted'}`}>{movement}</button>)}</div>
           </div>
-          <div><label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Cantidad</label><input type="number" min={1} value={qty} onChange={(event) => setQty(Number(event.target.value))} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" /></div>
+          <div><label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Cantidad</label><input aria-label="Costo del producto"
+          type="number" min={1} value={qty} onChange={(event) => setQty(Number(event.target.value))} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" /></div>
           <div className="flex items-center justify-between rounded-xl bg-muted/50 p-3"><span className="text-sm text-muted-foreground">Stock resultante</span><span className="font-mono text-lg font-bold text-foreground">{resultingStock}</span></div>
         </div>
         <div className="flex gap-3 border-t border-border px-6 py-4"><button onClick={onClose} className="btn-secondary flex-1 text-sm">Cancelar</button><button className="btn-primary flex-1 text-sm">Confirmar</button></div>

@@ -126,21 +126,34 @@ export default function PreciosPage() {
                 return (
                   <tr key={item.id} className={`group transition-colors ${isEditing ? 'bg-primary/5' : 'hover:bg-muted/20'}`}>
                     <td className="px-4 py-3"><p className="text-sm font-semibold text-foreground">{item.name}</p><p className="font-mono text-xs text-muted-foreground">{item.sku} · {item.brand}</p></td>
-                    <td className="px-4 py-3 text-right">{isEditing ? <input type="number" value={editValues.cost} onChange={(event) => setEditValues((current) => ({ ...current, cost: Number(event.target.value) }))} className="w-28 rounded-lg border border-primary bg-white px-2 py-1.5 text-right font-mono text-sm focus:outline-none" /> : <span className="font-mono text-sm text-muted-foreground">{formatCurrency(item.costPrice)}</span>}</td>
-                    <td className="px-4 py-3 text-right">{isEditing ? <input type="number" value={editValues.sale} onChange={(event) => setEditValues((current) => ({ ...current, sale: Number(event.target.value) }))} className="w-28 rounded-lg border border-primary bg-white px-2 py-1.5 text-right font-mono text-sm focus:outline-none" /> : <span className="font-mono text-sm font-bold text-foreground">{formatCurrency(item.salePrice)}</span>}</td>
+                    <td className="px-4 py-3 text-right">{isEditing ? <input aria-label="Costo del producto"
+                    type="number" value={editValues.cost} onChange={(event) => setEditValues((current) => ({ ...current, cost: Number(event.target.value) }))} className="w-28 rounded-lg border border-primary bg-white px-2 py-1.5 text-right font-mono text-sm focus:outline-none" /> : <span className="font-mono text-sm text-muted-foreground">{formatCurrency(item.costPrice)}</span>}</td>
+                    <td className="px-4 py-3 text-right">{isEditing ? <input aria-label="Costo del producto"
+                    type="number" value={editValues.sale} onChange={(event) => setEditValues((current) => ({ ...current, sale: Number(event.target.value) }))} className="w-28 rounded-lg border border-primary bg-white px-2 py-1.5 text-right font-mono text-sm focus:outline-none" /> : <span className="font-mono text-sm font-bold text-foreground">{formatCurrency(item.salePrice)}</span>}</td>
                     <td className="px-4 py-3 text-right"><span className="font-mono text-sm text-muted-foreground">{formatCurrency(suggestedPrice(item.costPrice, 35))}</span></td>
                     <td className="px-4 py-3 text-center"><span className={`font-mono text-sm font-bold ${currentMargin >= 35 ? 'text-success' : currentMargin >= 25 ? 'text-warning' : 'text-destructive'}`}>{currentMargin}%</span></td>
                     <td className="px-4 py-3 text-xs text-muted-foreground">{item.lastUpdated}</td>
                     <td className="px-4 py-3 text-right">
                       {isEditing ? (
                         <div className="flex items-center justify-end gap-1">
-                          <button onClick={() => { setPrices((current) => current.map((price) => price.id === item.id ? { ...price, costPrice: editValues.cost, salePrice: editValues.sale, margin: calcMargin(editValues.cost, editValues.sale), lastUpdated: '09/04/2026' } : price)); setEditingId(null) }} className="flex h-7 w-7 items-center justify-center rounded-lg bg-success/10 text-success transition-colors hover:bg-success/20"><Save size={13} /></button>
-                          <button onClick={() => setEditingId(null)} className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={13} /></button>
+                          <button aria-label="Actualizar alertas de stock"
+                            onClick={() => { 
+                              const now = new Date().toLocaleDateString('es-AR');
+                              setPrices((current) => current.map((price) => 
+                                price.id === item.id ? { ...price, costPrice: editValues.cost, salePrice: editValues.sale, margin: calcMargin(editValues.cost, editValues.sale), lastUpdated: now } : price
+                              )); 
+                              setEditingId(null) 
+                            }} 
+                            className="flex h-7 w-7 items-center justify-center rounded-lg bg-success/10 text-success transition-colors hover:bg-success/20"><Save size={13} /></button>
+                          <button aria-label="Actualizar alertas de stock"
+                          onClick={() => setEditingId(null)} className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={13} /></button>
                         </div>
                       ) : (
                         <div className="flex items-center justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-                          <button onClick={() => setHistoryId(item.id)} className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><History size={13} /></button>
-                          <button onClick={() => { setEditingId(item.id); setEditValues({ cost: item.costPrice, sale: item.salePrice }) }} className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"><Edit2 size={13} /></button>
+                          <button aria-label="Actualizar alertas de stock"
+                          onClick={() => setHistoryId(item.id)} className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><History size={13} /></button>
+                          <button aria-label="Actualizar alertas de stock"
+                          onClick={() => { setEditingId(item.id); setEditValues({ cost: item.costPrice, sale: item.salePrice }) }} className="flex h-7 w-7 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"><Edit2 size={13} /></button>
                         </div>
                       )}
                     </td>
@@ -155,10 +168,12 @@ export default function PreciosPage() {
       {showBulkModal ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md rounded-2xl bg-white shadow-modal animate-slide-up">
-            <div className="flex items-center justify-between border-b border-border px-6 py-4"><h2 className="text-lg font-bold text-foreground">Actualizacion masiva de precios</h2><button onClick={() => setShowBulkModal(false)} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={16} /></button></div>
+            <div className="flex items-center justify-between border-b border-border px-6 py-4"><h2 className="text-lg font-bold text-foreground">Actualizacion masiva de precios</h2><button aria-label="Actualizar alertas de stock"
+            onClick={() => setShowBulkModal(false)} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={16} /></button></div>
             <div className="space-y-4 p-6">
               <div className="flex gap-3 rounded-xl border border-warning/20 bg-warning/5 p-4"><AlertCircle size={16} className="mt-0.5 shrink-0 text-warning" /><p className="text-sm text-foreground">Esto actualizara el precio de venta de todos los productos segun el margen indicado sobre el costo.</p></div>
-              <div><label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Margen objetivo (%)</label><input type="number" value={bulkMargin} onChange={(event) => setBulkMargin(event.target.value)} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" /></div>
+              <div><label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">Margen objetivo (%)</label><input aria-label="Costo del producto"
+              type="number" value={bulkMargin} onChange={(event) => setBulkMargin(event.target.value)} className="w-full rounded-lg border border-border bg-white px-3 py-2.5 font-mono text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30" /></div>
             </div>
             <div className="flex gap-3 border-t border-border px-6 py-4">
               <button onClick={() => setShowBulkModal(false)} className="btn-secondary flex-1 text-sm">Cancelar</button>
@@ -171,7 +186,8 @@ export default function PreciosPage() {
       {historyItem ? (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm">
           <div className="w-full max-w-sm rounded-2xl bg-white shadow-modal animate-slide-up">
-            <div className="flex items-center justify-between border-b border-border px-6 py-4"><h2 className="text-base font-bold text-foreground">Historial de precios</h2><button onClick={() => setHistoryId(null)} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={16} /></button></div>
+            <div className="flex items-center justify-between border-b border-border px-6 py-4"><h2 className="text-base font-bold text-foreground">Historial de precios</h2><button aria-label="Actualizar alertas de stock"
+            onClick={() => setHistoryId(null)} className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted"><X size={16} /></button></div>
             <div className="p-6"><p className="mb-4 text-sm font-semibold text-foreground">{historyItem.name}</p><div className="space-y-2">{historyItem.priceHistory.map((entry, index) => <div key={`${historyItem.id}-${index}`} className="flex items-center justify-between rounded-xl bg-muted/30 p-3"><span className="text-xs text-muted-foreground">{entry.date}</span><span className="font-mono text-sm font-bold text-foreground">{formatCurrency(entry.price)}</span></div>)}</div></div>
           </div>
         </div>

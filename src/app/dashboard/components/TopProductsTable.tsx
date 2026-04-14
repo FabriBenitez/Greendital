@@ -17,14 +17,15 @@ interface TopProduct {
   trend: 'up' | 'down' | 'flat'
 }
 
-const topProducts: TopProduct[] = initialProducts.slice(0, 5).map((p: any) => ({
+// Mapeo con tipos seguros para evitar errores de compilación
+const topProducts: TopProduct[] = initialProducts.slice(0, 5).map((p) => ({
   id: String(p.id),
   sku: p.sku,
   nombre: p.name,
   categoria: p.category,
   marca: p.brand,
   vendidosHoy: p.id % 5 + 1, // Usamos una lógica fija basada en el ID para evitar errores de hidratación
-  vendidosMes: p.soldMonthly,
+  vendidosMes: p.soldMonthly || 0,
   precio: p.price,
   margen: Math.round(((p.price - p.cost) / p.cost) * 100),
   stock: p.stock,

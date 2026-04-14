@@ -39,7 +39,10 @@ export default function StockAlertsFeed() {
             <p className="text-xs text-muted-foreground">{alerts.filter((item) => item.severity === 'critical').length} criticos · {alerts.filter((item) => item.severity === 'warning').length} bajos</p>
           </div>
         </div>
-        <button type="button" className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
+        <button
+          type="button"
+          aria-label="Actualizar alertas de stock"
+          className="rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground">
           <RefreshCw size={14} />
         </button>
       </div>
@@ -59,11 +62,14 @@ export default function StockAlertsFeed() {
                 </div>
               </div>
               <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-                <button type="button" className="rounded p-1 text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary">
+                <button type="button" 
+                aria-label="Actualizar alertas de stock"
+                className="rounded p-1 text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary">
                   <ChevronRight size={13} />
                 </button>
                 <button
                   type="button"
+                  aria-label="Actualizar alertas de stock"
                   onClick={() => setAlerts((current) => current.filter((item) => item.id !== alert.id))}
                   className="rounded p-1 text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive"
                 >
