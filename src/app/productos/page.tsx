@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import AppLayout from '@/components/AppLayout'
 import { initialProducts, categories as MOCK_CATEGORIES, brands as MOCK_BRANDS } from '@/mockData'
