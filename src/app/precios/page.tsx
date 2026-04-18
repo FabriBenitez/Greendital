@@ -30,7 +30,7 @@ const initialPrices: PriceItem[] = initialProducts.map((p: any) => ({
   salePrice: p.price,
   margin: Math.round(((p.price - p.cost) / p.cost) * 100),
   lastUpdated: 'Hoy',
-  priceHistory: p.priceHistory.map((price: number) => ({ date: 'Anterior', price }))
+  priceHistory: (p.priceHistory || []).map((price: number) => ({ date: 'Anterior', price }))
 }))
 
 function formatCurrency(value: number) {
