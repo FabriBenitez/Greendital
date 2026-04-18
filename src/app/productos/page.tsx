@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import AppLayout from '@/components/AppLayout'
-import { initialProducts, categories as MOCK_CATEGORIES, brands as MOCK_BRANDS } from '@/mockData'
+import { initialProducts, categories as MOCK_CATEGORIES, brands as MOCK_BRANDS } from '@/showcase/data'
 import { ArrowUpDown, Edit2, Eye, Filter, MoreVertical, Package, Plus, Search, Upload, X } from 'lucide-react'
 
 interface Product {

@@ -3,7 +3,7 @@
 import AppLayout from '@/components/AppLayout'
 import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import { Search, ShoppingCart, User, Package2, Trash2, Minus, Plus, Percent } from 'lucide-react'
-import { compactCurrency, currency, initialProducts, paymentMethods } from '@/mockData'
+import { compactCurrency, currency, initialProducts, paymentMethods } from '@/showcase/data'
 
 interface Product {
   id: number
@@ -29,7 +29,7 @@ interface Product {
     [key: string]: string | undefined
   }
   variants: { label: string; stock: number }[]
-  priceHistory: string[]
+  priceHistory: number[]
   bundle?: string[]
 }
 
